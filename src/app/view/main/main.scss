@@ -1,0 +1,13 @@
+.main { 
+  background: linear-gradient( rgba(2,0,36,0.7539609593837535) 3%, rgba(2,0,36,0.9724483543417367) 32%,rgba(2,0,36,0.7539609593837535) 3%,);
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 50px;
+}
+
+.arts {
+  width: 90%;
+  background-color: transparent;
+}

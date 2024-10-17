@@ -18,14 +18,23 @@ const baseConfig = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.(jpg|jpeg|png|gif|pdf|ico)$/i,
+        type: 'asset/resource',
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [
-          // Creates `style` nodes from JS strings
           "style-loader",
-          // Translates CSS into CommonJS
           "css-loader",
-          // Compiles Sass to CSS
           "sass-loader"
+        ],
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader'
+          }
         ],
       }
     ],
@@ -36,6 +45,7 @@ const baseConfig = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, './dist'),
+    
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -49,6 +59,5 @@ const baseConfig = {
 module.exports = ({ mode }) => {
   const isProductionMode = mode === 'prod';
   const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
-
   return merge(baseConfig, envConfig);
 };
